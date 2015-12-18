@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'ZTCore'
-  s.version  = '1.0.0'
+  s.version  = '1.0.1'
   s.license  = { :type => "MIT", :file => "FILE_LICENSE" }
   s.summary  = 'Core'
   s.homepage = 'https://gitlab.com/zt/ztcore'
