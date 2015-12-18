@@ -6,120 +6,120 @@
 //  Copyright © 2015年 mapengzhen. All rights reserved.
 //
 
-#import "NSDate+BisDate.h"
+#import "ZTHandyDate.h"
 
-@implementation NSDate (BisDate)
-- (NSUInteger)bis_day {
-    return [NSDate bis_day:self];
+@implementation NSDate (Handy)
+- (NSUInteger)day {
+    return [NSDate day:self];
 }
 
-- (NSUInteger)bis_month {
-    return [NSDate bis_month:self];
+- (NSUInteger)month {
+    return [NSDate month:self];
 }
 
-- (NSUInteger)bis_year {
-    return [NSDate bis_year:self];
+- (NSUInteger)year {
+    return [NSDate year:self];
 }
 
-- (NSUInteger)bis_hour {
-    return [NSDate bis_hour:self];
+- (NSUInteger)hour {
+    return [NSDate hour:self];
 }
 
-- (NSUInteger)bis_minute {
-    return [NSDate bis_minute:self];
+- (NSUInteger)minute {
+    return [NSDate minute:self];
 }
 
-- (NSUInteger)bis_second {
-    return [NSDate bis_second:self];
+- (NSUInteger)second {
+    return [NSDate second:self];
 }
 
-+ (NSUInteger)bis_day:(NSDate *)bis_date {
-    return [[self bis_dateComponentsWithDate:bis_date] day];
++ (NSUInteger)day:(NSDate *)date {
+    return [[self dateComponentsWithDate:date] day];
 }
 
-+ (NSUInteger)bis_month:(NSDate *)bis_date {
++ (NSUInteger)month:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
     // NSDayCalendarUnit
-    NSDateComponents *dayComponents = [calendar components:(NSCalendarUnitMonth)fromDate:bis_date];
+    NSDateComponents *dayComponents = [calendar components:(NSCalendarUnitMonth)fromDate:date];
 #else
-    NSDateComponents *dayComponents = [calendar components:(NSMonthCalendarUnit)fromDate:bis_date];
+    NSDateComponents *dayComponents = [calendar components:(NSMonthCalendarUnit)fromDate:date];
 #endif
     
     return [dayComponents month];
 }
 
-+ (NSUInteger)bis_year:(NSDate *)bis_date {
++ (NSUInteger)year:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
     // NSDayCalendarUnit
-    NSDateComponents *dayComponents = [calendar components:(NSCalendarUnitYear)fromDate:bis_date];
+    NSDateComponents *dayComponents = [calendar components:(NSCalendarUnitYear)fromDate:date];
 #else
-    NSDateComponents *dayComponents = [calendar components:(NSYearCalendarUnit)fromDate:bis_date];
+    NSDateComponents *dayComponents = [calendar components:(NSYearCalendarUnit)fromDate:date];
 #endif
     
     return [dayComponents year];
 }
 
-+ (NSUInteger)bis_hour:(NSDate *)bis_date {
++ (NSUInteger)hour:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
     // NSDayCalendarUnit
-    NSDateComponents *dayComponents = [calendar components:(NSCalendarUnitHour)fromDate:bis_date];
+    NSDateComponents *dayComponents = [calendar components:(NSCalendarUnitHour)fromDate:date];
 #else
-    NSDateComponents *dayComponents = [calendar components:(NSHourCalendarUnit)fromDate:bis_date];
+    NSDateComponents *dayComponents = [calendar components:(NSHourCalendarUnit)fromDate:date];
 #endif
     
     return [dayComponents hour];
 }
 
-+ (NSUInteger)bis_minute:(NSDate *)bis_date {
++ (NSUInteger)minute:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
     // NSDayCalendarUnit
-    NSDateComponents *dayComponents = [calendar components:(NSCalendarUnitMinute)fromDate:bis_date];
+    NSDateComponents *dayComponents = [calendar components:(NSCalendarUnitMinute)fromDate:date];
 #else
-    NSDateComponents *dayComponents = [calendar components:(NSMinuteCalendarUnit)fromDate:bis_date];
+    NSDateComponents *dayComponents = [calendar components:(NSMinuteCalendarUnit)fromDate:date];
 #endif
     
     return [dayComponents minute];
 }
 
-+ (NSUInteger)bis_second:(NSDate *)bis_date {
++ (NSUInteger)second:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
     // NSDayCalendarUnit
-    NSDateComponents *dayComponents = [calendar components:(NSCalendarUnitSecond)fromDate:bis_date];
+    NSDateComponents *dayComponents = [calendar components:(NSCalendarUnitSecond)fromDate:date];
 #else
-    NSDateComponents *dayComponents = [calendar components:(NSSecondCalendarUnit)fromDate:bis_date];
+    NSDateComponents *dayComponents = [calendar components:(NSSecondCalendarUnit)fromDate:date];
 #endif
     
     return [dayComponents second];
 }
 
-- (NSUInteger)bis_daysInYear {
-    return [NSDate bis_daysInYear:self];
+- (NSUInteger)daysInYear {
+    return [NSDate daysInYear:self];
 }
 
-+ (NSUInteger)bis_daysInYear:(NSDate *)bis_date {
-    return [self bis_isLeapYear:bis_date] ? 366 : 365;
++ (NSUInteger)daysInYear:(NSDate *)date {
+    return [self isLeapYear:date] ? 366 : 365;
 }
 
-- (BOOL)bis_isLeapYear {
-    return [NSDate bis_isLeapYear:self];
+- (BOOL)isLeapYear {
+    return [NSDate isLeapYear:self];
 }
 
-+ (BOOL)bis_isLeapYear:(NSDate *)bis_date {
-    int year = (int)[bis_date bis_year];
-    return [self bis_isLeapYearWithYear:year];
++ (BOOL)isLeapYear:(NSDate *)date {
+    int year = (int)[date year];
+    return [self isLeapYearWithYear:year];
 }
 
-+ (BOOL)bis_isLeapYearWithYear:(int)year {
++ (BOOL)isLeapYearWithYear:(int)year {
     if ((year % 4  == 0 && year % 100 != 0) || year % 400 == 0) {
         return YES;
     }
@@ -127,101 +127,101 @@
     return NO;
 }
 
-- (NSString *)bis_formatYMD {
-    return [NSDate bis_formatYMD:self];
+- (NSString *)formatYMD {
+    return [NSDate formatYMD:self];
 }
 
-+ (NSString *)bis_formatYMD:(NSDate *)bis_date {
++ (NSString *)formatYMD:(NSDate *)date {
     return [NSString stringWithFormat:@"%ld-%02ld-%02ld",
-            (long)[bis_date bis_year],
-            (long)[bis_date bis_month],
-            (long)[bis_date bis_day]];
+            (long)[date year],
+            (long)[date month],
+            (long)[date day]];
 }
 
-- (NSUInteger)bis_weeksOfMonth {
-    return [NSDate bis_weeksOfMonth:self];
+- (NSUInteger)weeksOfMonth {
+    return [NSDate weeksOfMonth:self];
 }
 
-+ (NSUInteger)bis_weeksOfMonth:(NSDate *)bis_date {
-    return [[bis_date bis_lastdayOfMonth] bis_weekOfYear] - [[bis_date bis_begindayOfMonth] bis_weekOfYear] + 1;
++ (NSUInteger)weeksOfMonth:(NSDate *)date {
+    return [[date lastdayOfMonth] weekOfYear] - [[date begindayOfMonth] weekOfYear] + 1;
 }
 
-- (NSUInteger)bis_weekOfYear {
-    return [NSDate bis_weekOfYear:self];
+- (NSUInteger)weekOfYear {
+    return [NSDate weekOfYear:self];
 }
 
-+ (NSUInteger)bis_weekOfYear:(NSDate *)bis_date {
++ (NSUInteger)weekOfYear:(NSDate *)date {
     NSUInteger i;
-    NSUInteger year = [bis_date bis_year];
+    NSUInteger year = [date year];
     
-    NSDate *lastdate = [bis_date bis_lastdayOfMonth];
+    NSDate *lastdate = [date lastdayOfMonth];
     
-    for (i = 1;[[lastdate bis_dateAfterDay:-7 * i] bis_year] == year; i++) {
+    for (i = 1;[[lastdate dateAfterDay:-7 * i] year] == year; i++) {
         
     }
     
     return i;
 }
 
-- (NSDate *)bis_dateAfterDay:(NSUInteger)bis_day {
-    return [NSDate bis_dateAfterDate:self day:bis_day];
+- (NSDate *)dateAfterDay:(NSUInteger)day {
+    return [NSDate dateAfterDate:self day:day];
 }
 
-+ (NSDate *)bis_dateAfterDate:(NSDate *)bis_date day:(NSInteger)bis_day {
++ (NSDate *)dateAfterDate:(NSDate *)date day:(NSInteger)day {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *componentsToAdd = [[NSDateComponents alloc] init];
-    [componentsToAdd setDay:bis_day];
+    [componentsToAdd setDay:day];
     
-    NSDate *dateAfterDay = [calendar dateByAddingComponents:componentsToAdd toDate:bis_date options:0];
+    NSDate *dateAfterDay = [calendar dateByAddingComponents:componentsToAdd toDate:date options:0];
     
     return dateAfterDay;
 }
 
-- (NSDate *)bis_dateAfterMonth:(NSUInteger)bis_month {
-    return [NSDate bis_dateAfterDate:self month:bis_month];
+- (NSDate *)dateAfterMonth:(NSUInteger)month {
+    return [NSDate dateAfterDate:self month:month];
 }
 
-+ (NSDate *)bis_dateAfterDate:(NSDate *)bis_date month:(NSInteger)bis_month {
++ (NSDate *)dateAfterDate:(NSDate *)date month:(NSInteger)month {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *componentsToAdd = [[NSDateComponents alloc] init];
-    [componentsToAdd setMonth:bis_month];
-    NSDate *dateAfterMonth = [calendar dateByAddingComponents:componentsToAdd toDate:bis_date options:0];
+    [componentsToAdd setMonth:month];
+    NSDate *dateAfterMonth = [calendar dateByAddingComponents:componentsToAdd toDate:date options:0];
     
     return dateAfterMonth;
 }
 
-- (NSDate *)bis_begindayOfMonth {
-    return [NSDate bis_begindayOfMonth:self];
+- (NSDate *)begindayOfMonth {
+    return [NSDate begindayOfMonth:self];
 }
 
-+ (NSDate *)bis_begindayOfMonth:(NSDate *)bis_date {
-    return [self bis_dateAfterDate:bis_date day:-[bis_date bis_day] + 1];
++ (NSDate *)begindayOfMonth:(NSDate *)date {
+    return [self dateAfterDate:date day:-[date day] + 1];
 }
 
-- (NSDate *)bis_lastdayOfMonth {
-    return [NSDate bis_lastdayOfMonth:self];
+- (NSDate *)lastdayOfMonth {
+    return [NSDate lastdayOfMonth:self];
 }
 
-+ (NSDate *)bis_lastdayOfMonth:(NSDate *)bis_date {
-    NSDate *lastDate = [self bis_begindayOfMonth:bis_date];
-    return [[lastDate bis_dateAfterMonth:1] bis_dateAfterDay:-1];
++ (NSDate *)lastdayOfMonth:(NSDate *)date {
+    NSDate *lastDate = [self begindayOfMonth:date];
+    return [[lastDate dateAfterMonth:1] dateAfterDay:-1];
 }
 
-- (NSUInteger)bis_daysAgo {
-    return [NSDate bis_daysAgo:self];
+- (NSUInteger)daysAgo {
+    return [NSDate daysAgo:self];
 }
 
-+ (NSUInteger)bis_daysAgo:(NSDate *)bis_date {
++ (NSUInteger)daysAgo:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
     NSDateComponents *components = [calendar components:(NSCalendarUnitDay)
-                                               fromDate:bis_date
+                                               fromDate:date
                                                  toDate:[NSDate date]
                                                 options:0];
 #else
     NSDateComponents *components = [calendar components:(NSDayCalendarUnit)
-                                               fromDate:bis_date
+                                               fromDate:date
                                                  toDate:[NSDate date]
                                                 options:0];
 #endif
@@ -229,25 +229,25 @@
     return [components day];
 }
 
-- (NSInteger)bis_weekday {
-    return [NSDate bis_weekday:self];
+- (NSInteger)weekday {
+    return [NSDate weekday:self];
 }
 
-+ (NSInteger)bis_weekday:(NSDate *)bis_date {
++ (NSInteger)weekday:(NSDate *)date {
     NSCalendar *gregorian = [[NSCalendar alloc]
                              initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *comps = [gregorian components:(NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitWeekday) fromDate:bis_date];
+    NSDateComponents *comps = [gregorian components:(NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitWeekday) fromDate:date];
     NSInteger weekday = [comps weekday];
     
     return weekday;
 }
 
-- (NSString *)bis_dayFromWeekday {
-    return [NSDate bis_dayFromWeekday:self];
+- (NSString *)dayFromWeekday {
+    return [NSDate dayFromWeekday:self];
 }
 
-+ (NSString *)bis_dayFromWeekday:(NSDate *)bis_date {
-    switch([bis_date bis_weekday]) {
++ (NSString *)dayFromWeekday:(NSDate *)date {
+    switch([date weekday]) {
         case 1:
             return @"星期天";
             break;
@@ -275,7 +275,7 @@
     return @"";
 }
 
-- (BOOL)bis_isSameDay:(NSDate *)bis_anotherDate {
+- (BOOL)isSameDay:(NSDate *)anotherDate {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components1 = [calendar components:(NSCalendarUnitYear
                                                           | NSCalendarUnitMonth
@@ -284,19 +284,19 @@
     NSDateComponents *components2 = [calendar components:(NSCalendarUnitYear
                                                           | NSCalendarUnitMonth
                                                           | NSCalendarUnitDay)
-                                                fromDate:bis_anotherDate];
+                                                fromDate:anotherDate];
     return ([components1 year] == [components2 year]
             && [components1 month] == [components2 month]
             && [components1 day] == [components2 day]);
 }
 
-- (BOOL)bis_isToday {
-    return [self bis_isSameDay:[NSDate date]];
+- (BOOL)isToday {
+    return [self isSameDay:[NSDate date]];
 }
 
-- (NSDate *)bis_dateByAddingDays:(NSUInteger)bis_days {
+- (NSDate *)dateByAddingDays:(NSUInteger)days {
     NSDateComponents *c = [[NSDateComponents alloc] init];
-    c.day = bis_days;
+    c.day = days;
     return [[NSCalendar currentCalendar] dateByAddingComponents:c toDate:self options:0];
 }
 
@@ -319,8 +319,8 @@
  *
  *  @return Return the given month as a localized string
  */
-+ (NSString *)bis_monthWithMonthNumber:(NSInteger)bis_month {
-    switch(bis_month) {
++ (NSString *)monthWithMonthNumber:(NSInteger)month {
+    switch(month) {
         case 1:
             return @"January";
             break;
@@ -363,78 +363,78 @@
     return @"";
 }
 
-+ (NSString *)bis_stringWithDate:(NSDate *)bis_date format:(NSString *)bis_format {
-    return [bis_date bis_stringWithFormat:bis_format];
++ (NSString *)stringWithDate:(NSDate *)date format:(NSString *)format {
+    return [date stringWithFormat:format];
 }
 
-- (NSString *)bis_stringWithFormat:(NSString *)bis_format {
+- (NSString *)stringWithFormat:(NSString *)format {
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-    [outputFormatter setDateFormat:bis_format];
+    [outputFormatter setDateFormat:format];
     [outputFormatter setTimeZone:[NSTimeZone systemTimeZone]];
     NSString *retStr = [outputFormatter stringFromDate:self];
     
     return retStr;
 }
 
-+ (NSDate *)bis_dateWithString:(NSString *)bis_string format:(NSString *)bis_format {
++ (NSDate *)dateWithString:(NSString *)string format:(NSString *)format {
     NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
-    [inputFormatter setDateFormat:bis_format];
+    [inputFormatter setDateFormat:format];
     [inputFormatter setTimeZone:[NSTimeZone systemTimeZone]];
-    NSDate *date = [inputFormatter dateFromString:bis_string];
+    NSDate *date = [inputFormatter dateFromString:string];
     
     return date;
 }
 
-- (NSUInteger)bis_daysInMonth:(NSUInteger)bis_month {
-    return [NSDate bis_daysInMonth:self month:bis_month];
+- (NSUInteger)daysInMonth:(NSUInteger)month {
+    return [NSDate daysInMonth:self month:month];
 }
 
-+ (NSUInteger)bis_dayInYear:(NSUInteger)year month:(NSUInteger)month {
++ (NSUInteger)dayInYear:(NSUInteger)year month:(NSUInteger)month {
     switch (month) {
         case 1: case 3: case 5: case 7: case 8: case 10: case 12:
             return 31;
         case 2:
-            return [self bis_isLeapYearWithYear:year] ? 29 : 28;
+            return [self isLeapYearWithYear:year] ? 29 : 28;
     }
     
     return 30;
 }
 
-+ (NSUInteger)bis_daysInMonth:(NSDate *)bis_date month:(NSUInteger)bis_month {
-    switch (bis_month) {
++ (NSUInteger)daysInMonth:(NSDate *)date month:(NSUInteger)month {
+    switch (month) {
         case 1: case 3: case 5: case 7: case 8: case 10: case 12:
             return 31;
         case 2:
-            return [bis_date bis_isLeapYear] ? 29 : 28;
+            return [date isLeapYear] ? 29 : 28;
     }
     return 30;
 }
 
-- (NSUInteger)bis_daysInMonth {
-    return [NSDate bis_daysInMonth:self];
+- (NSUInteger)daysInMonth {
+    return [NSDate daysInMonth:self];
 }
 
-+ (NSUInteger)bis_daysInMonth:(NSDate *)bis_date {
-    return [self bis_daysInMonth:bis_date month:[bis_date bis_month]];
++ (NSUInteger)daysInMonth:(NSDate *)date {
+    return [self daysInMonth:date month:[date month]];
 }
 
-- (NSString *)bis_timeInfo {
-    return [NSDate bis_timeInfoWithDate:self];
+- (NSString *)timeInfo {
+    return [NSDate timeInfoWithDate:self];
 }
 
-+ (NSString *)bis_timeInfoWithDate:(NSDate *)bis_date {
-    return [self bis_timeInfoWithDateString:[self bis_stringWithDate:bis_date format:[self bis_ymdHmsFormat]]];
++ (NSString *)timeInfoWithDate:(NSDate *)date {
+    return [self timeInfoWithDateString:[self stringWithDate:date format:[self ymdHmsFormat]]];
 }
 
-+ (NSString *)bis_timeInfoWithDateString:(NSString *)bis_dateString {
-    NSDate *date = [self bis_dateWithString:bis_dateString format:[self bis_ymdHmsFormat]];
++ (NSString *)timeInfoWithDateString:(NSString *)dateString {
+    NSDate *date = [self dateWithString:dateString format:[self ymdHmsFormat]];
     
     NSDate *curDate = [NSDate date];
     NSTimeInterval time = -[date timeIntervalSinceDate:curDate];
     
-    int month = (int)([curDate bis_month] - [date bis_month]);
-    int year = (int)([curDate bis_year] - [date bis_year]);
-    int day = (int)([curDate bis_day] - [date bis_day]);
+    int month = (int)([curDate month] - [date month]);
+    int year = (int)([curDate year] - [date year]);
+    int day = (int)([curDate day] - [date day]);
     
     NSTimeInterval retTime = 1.0;
     if (time < 3600) { // 小于一小时
@@ -451,7 +451,7 @@
     // 第一个条件是同年，且相隔时间在一个月内
     // 第二个条件是隔年，对于隔年，只能是去年12月与今年1月这种情况
     else if ((abs(year) == 0 && abs(month) <= 1)
-             || (abs(year) == 1 && [curDate bis_month] == 1 && [date bis_month] == 12)) {
+             || (abs(year) == 1 && [curDate month] == 1 && [date month] == 12)) {
         int retDay = 0;
         if (year == 0) { // 同年
             if (month == 0) { // 同月
@@ -461,10 +461,10 @@
         
         if (retDay <= 0) {
             // 获取发布日期中，该月有多少天
-            int totalDays = (int)[self bis_daysInMonth:date month:[date bis_month]];
+            int totalDays = (int)[self daysInMonth:date month:[date month]];
             
             // 当前天数 + （发布日期月中的总天数-发布日期月中发布日，即等于距离今天的天数）
-            retDay = (int)[curDate bis_day] + (totalDays - (int)[date bis_day]);
+            retDay = (int)[curDate day] + (totalDays - (int)[date day]);
         }
         
         return [NSString stringWithFormat:@"%d天前", (abs)(retDay)];
@@ -475,8 +475,8 @@
             }
             
             // 隔年
-            int month = (int)[curDate bis_month];
-            int preMonth = (int)[date bis_month];
+            int month = (int)[curDate month];
+            int preMonth = (int)[date month];
             if (month == 12 && preMonth == 12) {// 隔年，但同月，就作为满一年来计算
                 return @"1年前";
             }
@@ -489,36 +489,36 @@
     return @"1小时前";
 }
 
-- (NSString *)bis_ymdFormat {
-    return [NSDate bis_ymdFormat];
+- (NSString *)ymdFormat {
+    return [NSDate ymdFormat];
 }
 
-- (NSString *)bis_hmsFormat {
-    return [NSDate bis_hmsFormat];
+- (NSString *)hmsFormat {
+    return [NSDate hmsFormat];
 }
 
-- (NSString *)bis_ymdHmsFormat {
-    return [NSDate bis_ymdHmsFormat];
+- (NSString *)ymdHmsFormat {
+    return [NSDate ymdHmsFormat];
 }
 
-+ (NSString *)bis_ymdFormat {
++ (NSString *)ymdFormat {
     return @"yyyy-MM-dd";
 }
 
-+ (NSString *)bis_hmsFormat {
++ (NSString *)hmsFormat {
     return @"HH:mm:ss";
 }
 
-+ (NSString *)bis_ymdHmsFormat {
-    return [NSString stringWithFormat:@"%@ %@", [self bis_ymdFormat], [self bis_hmsFormat]];
++ (NSString *)ymdHmsFormat {
+    return [NSString stringWithFormat:@"%@ %@", [self ymdFormat], [self hmsFormat]];
 }
 
-- (NSDate *)bis_offsetYears:(int)bis_numYears {
-    return [NSDate bis_offsetYears:bis_numYears fromDate:self];
+- (NSDate *)offsetYears:(int)numYears {
+    return [NSDate offsetYears:numYears fromDate:self];
 }
 
-+ (NSDate *)bis_offsetYears:(int)bis_numYears fromDate:(NSDate *)bis_fromDate {
-    if (bis_fromDate == nil) {
++ (NSDate *)offsetYears:(int)numYears fromDate:(NSDate *)fromDate {
+    if (fromDate == nil) {
         return nil;
     }
     
@@ -533,19 +533,19 @@
     
     
     NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
-    [offsetComponents setYear:bis_numYears];
+    [offsetComponents setYear:numYears];
     
     return [gregorian dateByAddingComponents:offsetComponents
-                                      toDate:bis_fromDate
+                                      toDate:fromDate
                                      options:0];
 }
 
-- (NSDate *)bis_offsetMonths:(int)bis_numMonths {
-    return [NSDate bis_offsetMonths:bis_numMonths fromDate:self];
+- (NSDate *)offsetMonths:(int)numMonths {
+    return [NSDate offsetMonths:numMonths fromDate:self];
 }
 
-+ (NSDate *)bis_offsetMonths:(int)bis_numMonths fromDate:(NSDate *)bis_fromDate {
-    if (bis_fromDate == nil) {
++ (NSDate *)offsetMonths:(int)numMonths fromDate:(NSDate *)fromDate {
+    if (fromDate == nil) {
         return nil;
     }
     
@@ -559,46 +559,19 @@
 #endif
     
     NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
-    [offsetComponents setMonth:bis_numMonths];
+    [offsetComponents setMonth:numMonths];
     
     return [gregorian dateByAddingComponents:offsetComponents
-                                      toDate:bis_fromDate
+                                      toDate:fromDate
                                      options:0];
 }
 
-- (NSDate *)bis_offsetDays:(int)bis_numDays {
-    return [NSDate bis_offsetDays:bis_numDays fromDate:self];
+- (NSDate *)offsetDays:(int)numDays {
+    return [NSDate offsetDays:numDays fromDate:self];
 }
 
-+ (NSDate *)bis_offsetDays:(int)bis_numDays fromDate:(NSDate *)bis_fromDate {
-    if (bis_fromDate == nil) {
-        return nil;
-    }
-    
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
-    // NSDayCalendarUnit
-    NSCalendar *gregorian = [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-#else
-    NSCalendar *gregorian = [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSGregorianCalendar];
-#endif
-    
-    
-    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
-    [offsetComponents setDay:bis_numDays];
-    
-    return [gregorian dateByAddingComponents:offsetComponents
-                                      toDate:bis_fromDate
-                                     options:0];
-}
-
-- (NSDate *)bis_offsetHours:(int)bis_hours {
-    return [NSDate bis_offsetHours:bis_hours fromDate:self];
-}
-
-+ (NSDate *)bis_offsetHours:(int)bis_numHours fromDate:(NSDate *)bis_fromDate {
-    if (bis_fromDate == nil) {
++ (NSDate *)offsetDays:(int)numDays fromDate:(NSDate *)fromDate {
+    if (fromDate == nil) {
         return nil;
     }
     
@@ -613,14 +586,41 @@
     
     
     NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
-    [offsetComponents setHour:bis_numHours];
+    [offsetComponents setDay:numDays];
     
     return [gregorian dateByAddingComponents:offsetComponents
-                                      toDate:bis_fromDate
+                                      toDate:fromDate
                                      options:0];
 }
 
-+ (NSDateComponents *)bis_dateComponentsWithDate:(NSDate *)date {
+- (NSDate *)offsetHours:(int)hours {
+    return [NSDate offsetHours:hours fromDate:self];
+}
+
++ (NSDate *)offsetHours:(int)numHours fromDate:(NSDate *)fromDate {
+    if (fromDate == nil) {
+        return nil;
+    }
+    
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
+    // NSDayCalendarUnit
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+#else
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSGregorianCalendar];
+#endif
+    
+    
+    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
+    [offsetComponents setHour:numHours];
+    
+    return [gregorian dateByAddingComponents:offsetComponents
+                                      toDate:fromDate
+                                     options:0];
+}
+
++ (NSDateComponents *)dateComponentsWithDate:(NSDate *)date {
     NSCalendar *calendar = nil;
     NSUInteger flags = 0;
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
@@ -637,11 +637,11 @@
     return [calendar components:flags fromDate:date];
 }
 
-- (NSString *)bis_toTimeStamp {
+- (NSString *)toTimeStamp {
     return [NSString stringWithFormat:@"%lf", [self timeIntervalSince1970]];
 }
 
-+ (NSDate *)bis_toDateWithTimeStamp:(NSString *)timeStamp {
++ (NSDate *)toDateWithTimeStamp:(NSString *)timeStamp {
     NSString *arg = timeStamp;
     if (![timeStamp isKindOfClass:[NSString class]]) {
         arg = [NSString stringWithFormat:@"%@", timeStamp];
@@ -651,7 +651,7 @@
 }
 
 
-+ (NSDate *)bis_localDateWithDate:(NSDate *)anyDate {
++ (NSDate *)localDateWithDate:(NSDate *)anyDate {
     //设置源日期时区
     NSTimeZone* sourceTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];//或GMT
     //设置转换后的目标日期时区

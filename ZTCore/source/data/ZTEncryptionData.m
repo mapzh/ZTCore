@@ -6,68 +6,68 @@
 //  Copyright © 2015年 mapengzhen. All rights reserved.
 //
 
-#import "NSData+BisData.h"
+#import "ZTEncryptionData.h"
 
-@implementation NSData (BisData)
-- (NSData *)hdf_MD2 {
+@implementation NSData (EncryptionData)
+- (NSData *)MD2 {
     unsigned char hash[CC_MD2_DIGEST_LENGTH];
     (void) CC_MD2( [self bytes], (CC_LONG)[self length], hash );
     
     return ( [NSData dataWithBytes: hash length: CC_MD2_DIGEST_LENGTH] );
 }
 
-- (NSData *)hdf_MD4 {
+- (NSData *)MD4 {
     unsigned char hash[CC_MD4_DIGEST_LENGTH];
     (void) CC_MD4( [self bytes], (CC_LONG)[self length], hash );
     
     return ( [NSData dataWithBytes: hash length: CC_MD4_DIGEST_LENGTH] );
 }
 
-- (NSData *)hdf_MD5 {
+- (NSData *)MD5 {
     unsigned char hash[CC_MD5_DIGEST_LENGTH];
     (void) CC_MD5( [self bytes], (CC_LONG)[self length], hash );
     
     return ( [NSData dataWithBytes: hash length: CC_MD5_DIGEST_LENGTH] );
 }
 
-- (NSData *)hdf_SHA1 {
+- (NSData *)SHA1 {
     unsigned char hash[CC_SHA1_DIGEST_LENGTH];
     (void) CC_SHA1( [self bytes], (CC_LONG)[self length], hash );
     
     return ( [NSData dataWithBytes: hash length: CC_SHA1_DIGEST_LENGTH] );
 }
 
-- (NSData *)hdf_SHA224 {
+- (NSData *)SHA224 {
     unsigned char hash[CC_SHA224_DIGEST_LENGTH];
     (void) CC_SHA224( [self bytes], (CC_LONG)[self length], hash );
     
     return ( [NSData dataWithBytes: hash length: CC_SHA224_DIGEST_LENGTH] );
 }
 
-- (NSData *)hdf_SHA256 {
+- (NSData *)SHA256 {
     unsigned char hash[CC_SHA256_DIGEST_LENGTH];
     (void) CC_SHA256( [self bytes], (CC_LONG)[self length], hash );
     
     return ( [NSData dataWithBytes: hash length: CC_SHA256_DIGEST_LENGTH] );
 }
 
-- (NSData *)hdf_SHA384 {
+- (NSData *)SHA384 {
     unsigned char hash[CC_SHA384_DIGEST_LENGTH];
     (void) CC_SHA384( [self bytes], (CC_LONG)[self length], hash );
     
     return ( [NSData dataWithBytes: hash length: CC_SHA384_DIGEST_LENGTH] );
 }
 
-- (NSData *)hdf_SHA512 {
+- (NSData *)SHA512 {
     unsigned char hash[CC_SHA512_DIGEST_LENGTH];
     (void) CC_SHA512( [self bytes], (CC_LONG)[self length], hash );
     
     return ( [NSData dataWithBytes: hash length: CC_SHA512_DIGEST_LENGTH] );
 }
 
-- (NSData *)hdf_AES256EncryptedUsingKey:(id)key error:(NSError **)error {
+- (NSData *)AES256EncryptedUsingKey:(id)key error:(NSError **)error {
     CCCryptorStatus status = kCCSuccess;
-    NSData * result = [self hdf_dataEncryptedUsingAlgorithm: kCCAlgorithmAES128
+    NSData * result = [self dataEncryptedUsingAlgorithm: kCCAlgorithmAES128
                                                         key: key
                                                     options: kCCOptionPKCS7Padding
                                                       error: &status];
@@ -81,9 +81,9 @@
     return ( nil );
 }
 
-- (NSData *)hdf_AES256DecryptedUsingKey:(id)key error:(NSError **)error {
+- (NSData *)AES256DecryptedUsingKey:(id)key error:(NSError **)error {
     CCCryptorStatus status = kCCSuccess;
-    NSData * result = [self hdf_decryptedDataUsingAlgorithm: kCCAlgorithmAES128
+    NSData * result = [self decryptedDataUsingAlgorithm: kCCAlgorithmAES128
                                                         key: key
                                                     options: kCCOptionPKCS7Padding
                                                       error: &status];
@@ -97,9 +97,9 @@
     return ( nil );
 }
 
-- (NSData *)hdf_DESEncryptedUsingKey:(id)key error:(NSError **)error {
+- (NSData *)DESEncryptedUsingKey:(id)key error:(NSError **)error {
     CCCryptorStatus status = kCCSuccess;
-    NSData * result = [self hdf_dataEncryptedUsingAlgorithm: kCCAlgorithmDES
+    NSData * result = [self dataEncryptedUsingAlgorithm: kCCAlgorithmDES
                                                         key: key
                                                     options: kCCOptionPKCS7Padding
                                                       error: &status];
@@ -113,9 +113,9 @@
     return ( nil );
 }
 
-- (NSData *)hdf_DESDecryptedUsingKey:(id)key error:(NSError **)error {
+- (NSData *)DESDecryptedUsingKey:(id)key error:(NSError **)error {
     CCCryptorStatus status = kCCSuccess;
-    NSData * result = [self hdf_decryptedDataUsingAlgorithm: kCCAlgorithmDES
+    NSData * result = [self decryptedDataUsingAlgorithm: kCCAlgorithmDES
                                                         key: key
                                                     options: kCCOptionPKCS7Padding
                                                       error: &status];
@@ -129,9 +129,9 @@
     return ( nil );
 }
 
-- (NSData *)hdf_CASTEncryptedUsingKey:(id)key error:(NSError **)error {
+- (NSData *)CASTEncryptedUsingKey:(id)key error:(NSError **)error {
     CCCryptorStatus status = kCCSuccess;
-    NSData * result = [self hdf_dataEncryptedUsingAlgorithm: kCCAlgorithmCAST
+    NSData * result = [self dataEncryptedUsingAlgorithm: kCCAlgorithmCAST
                                                         key: key
                                                     options: kCCOptionPKCS7Padding
                                                       error: &status];
@@ -145,9 +145,9 @@
     return ( nil );
 }
 
-- (NSData *)hdf_CASTDecryptedUsingKey:(id)key error:(NSError **)error {
+- (NSData *)CASTDecryptedUsingKey:(id)key error:(NSError **)error {
     CCCryptorStatus status = kCCSuccess;
-    NSData * result = [self hdf_decryptedDataUsingAlgorithm: kCCAlgorithmCAST
+    NSData * result = [self decryptedDataUsingAlgorithm: kCCAlgorithmCAST
                                                         key: key
                                                     options: kCCOptionPKCS7Padding
                                                       error: &status];
@@ -161,21 +161,21 @@
     return ( nil );
 }
 
-- (NSData *)hdf_dataEncryptedUsingAlgorithm:(CCAlgorithm)algorithm
+- (NSData *)dataEncryptedUsingAlgorithm:(CCAlgorithm)algorithm
                                         key:(id)key		// data or string
                                       error:(CCCryptorStatus *)error {
-    return ( [self hdf_dataEncryptedUsingAlgorithm: algorithm
+    return ( [self dataEncryptedUsingAlgorithm: algorithm
                                                key: key
                               initializationVector: nil
                                            options: 0
                                              error: error] );
 }
 
-- (NSData *)hdf_dataEncryptedUsingAlgorithm:(CCAlgorithm)algorithm
+- (NSData *)dataEncryptedUsingAlgorithm:(CCAlgorithm)algorithm
                                         key:(id)key		// data or string
                                     options:(CCOptions) options
                                       error:(CCCryptorStatus *) error {
-    return ( [self hdf_dataEncryptedUsingAlgorithm: algorithm
+    return ( [self dataEncryptedUsingAlgorithm: algorithm
                                                key: key
                               initializationVector: nil
                                            options: options
@@ -245,7 +245,7 @@ static void FixKeyLengths( CCAlgorithm algorithm, NSMutableData * keyData, NSMut
     [ivData setLength: [keyData length]];
 }
 
-- (NSData *)hdf_dataEncryptedUsingAlgorithm:(CCAlgorithm) algorithm
+- (NSData *)dataEncryptedUsingAlgorithm:(CCAlgorithm) algorithm
                                         key:(id)key		// data or string
                        initializationVector:(id)iv		// data or string
                                     options:(CCOptions)options
@@ -290,27 +290,27 @@ static void FixKeyLengths( CCAlgorithm algorithm, NSMutableData * keyData, NSMut
     return ( result );
 }
 
-- (NSData *)hdf_decryptedDataUsingAlgorithm:(CCAlgorithm)algorithm
+- (NSData *)decryptedDataUsingAlgorithm:(CCAlgorithm)algorithm
                                         key:(id)key		// data or string
                                       error:(CCCryptorStatus *)error {
-    return ( [self hdf_decryptedDataUsingAlgorithm: algorithm
+    return ( [self decryptedDataUsingAlgorithm: algorithm
                                                key: key
                               initializationVector: nil
                                            options: 0
                                              error: error] );}
 
-- (NSData *)hdf_decryptedDataUsingAlgorithm:(CCAlgorithm)algorithm
+- (NSData *)decryptedDataUsingAlgorithm:(CCAlgorithm)algorithm
                                         key:(id)key		// data or string
                                     options:(CCOptions)options
                                       error:(CCCryptorStatus *)error {
-    return ( [self hdf_decryptedDataUsingAlgorithm: algorithm
+    return ( [self decryptedDataUsingAlgorithm: algorithm
                                                key: key
                               initializationVector: nil
                                            options: options
                                              error: error] );
 }
 
-- (NSData *)hdf_decryptedDataUsingAlgorithm:(CCAlgorithm)algorithm
+- (NSData *)decryptedDataUsingAlgorithm:(CCAlgorithm)algorithm
                                         key:(id)key		// data or string
                        initializationVector:(id)iv		// data or string
                                     options:(CCOptions)options
@@ -354,11 +354,11 @@ static void FixKeyLengths( CCAlgorithm algorithm, NSMutableData * keyData, NSMut
     return ( result );
 }
 
-- (NSString *)hdf_toString {
+- (NSString *)toString {
     return [[NSString alloc] initWithData:self encoding:NSUTF8StringEncoding];
 }
 
-+ (NSData *)hdf_base64DataFromString:(NSString *)string {
++ (NSData *)base64DataFromString:(NSString *)string {
     unsigned long ixtext, lentext;
     unsigned char ch, inbuf[4], outbuf[3];
     short i, ixinbuf;

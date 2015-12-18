@@ -1,18 +1,19 @@
 //
-//  NSDictionary+BisDictionary.h
-//  Recyclers
+//  ZTSafeDictionnary.h
+//  ZTCoreDemo
 //
-//  Created by 翟冰涛 on 15/11/23.
-//  Copyright © 2015年 Recycle. All rights reserved.
+//  Created by mapengzhen on 15/12/18.
+//  Copyright © 2015年 Biscuit. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface NSDictionary (BisDictionary)
+@interface NSDictionary (Safe)
+
 /*!
  *  根据key值获取值，@return 如果存在，返回value，否则返回nil
  */
--(id)bis_safeObjectForKey:(id <NSCopying>)aKey;
+-(id)safeObjectForKey:(id <NSCopying>)aKey;
 
 /*!
  *
@@ -20,14 +21,14 @@
  *
  * @return 如果存在，返回value，否则返回nil
  */
-- (NSDictionary *)bis_dictionaryValueForKey:(id)key;
+- (NSDictionary *)dictionaryValueForKey:(id)key;
 
 /*!
  * 根据key获取值
  *
  * @return 如果存在，返回value，否则返回nil
  */
-- (NSArray *)bis_arrayValueForKey:(id)key;
+- (NSArray *)arrayValueForKey:(id)key;
 
 /*!
  *
@@ -35,5 +36,6 @@
  *
  * @return 如果存在，返回value，否则返回nil
  */
-- (NSString *)bis_stringValueForKey:(id)key;
+- (NSString *)stringValueForKey:(id)key;
+
 @end

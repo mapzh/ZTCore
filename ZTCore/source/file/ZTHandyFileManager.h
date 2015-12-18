@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSFileManager (BisFileManager)
+@interface NSFileManager (Handy)
 /*!
  * @author   
  *
@@ -18,7 +18,7 @@
  *
  * @return 返回YES表示存在，返回NO表示不存在
  */
-- (BOOL) bis_isFileExists:(NSString *)filePath;
+- (BOOL) isFileExists:(NSString *)filePath;
 
 /*!
  * @author   
@@ -30,7 +30,7 @@
  *
  * @return 返回YES表示超时，返回NO表示未超时
  */
-- (BOOL) bis_isFile:(NSString *)filePath timeout:(NSTimeInterval)timeout;
+- (BOOL) isFile:(NSString *)filePath timeout:(NSTimeInterval)timeout;
 
 /*!
  * @author   
@@ -41,5 +41,5 @@
  *
  * @return 文件的大小
  */
-- (long) bis_fileSizeWithPath:(NSString *)path;
+- (long) fileSizeWithPath:(NSString *)path;
 @end

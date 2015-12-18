@@ -6,18 +6,18 @@
 //  Copyright © 2015年 mapengzhen. All rights reserved.
 //
 
-#import "NSFileManager+BisFileManager.h"
+#import "ZTHandyFileManager.h"
 
-@implementation NSFileManager (BisFileManager)
+@implementation NSFileManager (Handy)
 
-- (BOOL) bis_isFileExists:(NSString *)filePath {
+- (BOOL) isFileExists:(NSString *)filePath {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL result = [fileManager fileExistsAtPath:filePath];
     return result;
 }
 
-- (BOOL) bis_isFile:(NSString *)filePath timeout:(NSTimeInterval)timeout {
-    if ([[NSFileManager defaultManager]  bis_isFileExists:filePath]) {
+- (BOOL) isFile:(NSString *)filePath timeout:(NSTimeInterval)timeout {
+    if ([[NSFileManager defaultManager]  isFileExists:filePath]) {
         NSError *error = nil;
         NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath
                                                                                     error:&error];
@@ -44,7 +44,7 @@
     return YES;
 }
 
-- (long) bis_fileSizeWithPath:(NSString *)path {
+- (long) fileSizeWithPath:(NSString *)path {
     NSError *error = nil;
     NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:path
                                                                                 error:&error];

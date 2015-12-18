@@ -10,14 +10,14 @@
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonCryptor.h>
 #import <CommonCrypto/CommonHMAC.h>
-@interface NSData (BisData)
+@interface NSData (EncryptionData)
 #pragma mark - 转换字符串API
 /*!
  *  将二进制转换成字符串
  *
  *  @return 字符串
  */
-- (NSString *)bis_toString;
+- (NSString *)toString;
 
 #pragma mark - 加密相关API
 /*!
@@ -25,66 +25,66 @@
  *
  *  @return base64二进制
  */
-+ (NSData *)bis_base64DataFromString:(NSString *)string;
++ (NSData *)base64DataFromString:(NSString *)string;
 
 /**
  * MD加密算法
  */
-- (NSData *)bis_MD2;
-- (NSData *)bis_MD4;
-- (NSData *)bis_MD5;
+- (NSData *)MD2;
+- (NSData *)MD4;
+- (NSData *)MD5;
 
 /**
  * SHA加密算法
  */
-- (NSData *)bis_SHA1;
-- (NSData *)bis_SHA224;
-- (NSData *)bis_SHA256;
-- (NSData *)bis_SHA384;
-- (NSData *)bis_SHA512;
+- (NSData *)SHA1;
+- (NSData *)SHA224;
+- (NSData *)SHA256;
+- (NSData *)SHA384;
+- (NSData *)SHA512;
 
 /**
  * AES256加密与解密
  */
-- (NSData *)bis_AES256EncryptedUsingKey:(id)key error:(NSError **)error;
-- (NSData *)bis_AES256DecryptedUsingKey:(id)key error:(NSError **)error;
+- (NSData *)AES256EncryptedUsingKey:(id)key error:(NSError **)error;
+- (NSData *)AES256DecryptedUsingKey:(id)key error:(NSError **)error;
 
 /**
  * DES加密与解密
  */
-- (NSData *)bis_DESEncryptedUsingKey:(id)key error:(NSError **)error;
-- (NSData *)bis_DESDecryptedUsingKey:(id)key error:(NSError **)error;
+- (NSData *)DESEncryptedUsingKey:(id)key error:(NSError **)error;
+- (NSData *)DESDecryptedUsingKey:(id)key error:(NSError **)error;
 
 /**
  * CAST加密与解密
  */
-- (NSData *)bis_CASTEncryptedUsingKey:(id)key error:(NSError **)error;
-- (NSData *)bis_CASTDecryptedUsingKey:(id)key error:(NSError **)error;
+- (NSData *)CASTEncryptedUsingKey:(id)key error:(NSError **)error;
+- (NSData *)CASTDecryptedUsingKey:(id)key error:(NSError **)error;
 
 /**
  * 弱加密算法
  */
-- (NSData *)bis_dataEncryptedUsingAlgorithm:(CCAlgorithm)algorithm
+- (NSData *)dataEncryptedUsingAlgorithm:(CCAlgorithm)algorithm
                                         key:(id)key		// data or string
                                       error:(CCCryptorStatus *)error;
-- (NSData *)bis_dataEncryptedUsingAlgorithm:(CCAlgorithm)algorithm
+- (NSData *)dataEncryptedUsingAlgorithm:(CCAlgorithm)algorithm
                                         key:(id)key		// data or string
                                     options:(CCOptions) options
                                       error:(CCCryptorStatus *) error;
-- (NSData *)bis_dataEncryptedUsingAlgorithm:(CCAlgorithm) algorithm
+- (NSData *)dataEncryptedUsingAlgorithm:(CCAlgorithm) algorithm
                                         key:(id)key		// data or string
                        initializationVector:(id)iv		// data or string
                                     options:(CCOptions)options
                                       error:(CCCryptorStatus *)error;
 
-- (NSData *)bis_decryptedDataUsingAlgorithm:(CCAlgorithm)algorithm
+- (NSData *)decryptedDataUsingAlgorithm:(CCAlgorithm)algorithm
                                         key:(id)key		// data or string
                                       error:(CCCryptorStatus *)error;
-- (NSData *)bis_decryptedDataUsingAlgorithm:(CCAlgorithm)algorithm
+- (NSData *)decryptedDataUsingAlgorithm:(CCAlgorithm)algorithm
                                         key:(id)key		// data or string
                                     options:(CCOptions)options
                                       error:(CCCryptorStatus *)error;
-- (NSData *)bis_decryptedDataUsingAlgorithm:(CCAlgorithm)algorithm
+- (NSData *)decryptedDataUsingAlgorithm:(CCAlgorithm)algorithm
                                         key:(id)key		// data or string
                        initializationVector:(id)iv		// data or string
                                     options:(CCOptions)options

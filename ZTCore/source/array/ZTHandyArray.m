@@ -1,15 +1,15 @@
 //
-//  NSArray+BisArray.m
-//  BiscuitCoreDemo
+//  ZTHandyArray.m
+//  ZTCoreDemo
 //
-//  Created by 翟冰涛 on 15/12/7.
-//  Copyright © 2015年 mapengzhen. All rights reserved.
+//  Created by mapengzhen on 15/12/18.
+//  Copyright © 2015年 Biscuit. All rights reserved.
 //
 
-#import "NSArray+BisArray.h"
+#import "ZTHandyArray.h"
 
-@implementation NSArray (BisArray)
-- (id)bis_safeObjectAtIndex:(NSUInteger)index {
+@implementation NSArray (Handy)
+- (id)safeObjectAtIndex:(NSUInteger)index {
     NSUInteger count = [self count];
     
     if (count > 0 && index < count) {
@@ -19,11 +19,11 @@
     return nil;
 }
 
-- (NSArray *)bis_reversedArray {
-    return [NSArray bis_reversedArray:self];
+- (NSArray *)reversedArray {
+    return [NSArray reversedArray:self];
 }
 
-+ (NSArray *)bis_reversedArray:(NSArray *)array {
++ (NSArray *)reversedArray:(NSArray *)array {
     NSMutableArray *arrayTemp = [NSMutableArray arrayWithCapacity:[array count]];
     NSEnumerator *enumerator = [array reverseObjectEnumerator];
     
@@ -34,11 +34,11 @@
     return array;
 }
 
-- (NSString *)bis_toJson {
-    return [NSArray bis_toJson:self];
+- (NSString *)toJson {
+    return [NSArray toJson:self];
 }
 
-+ (NSString *)bis_toJson:(NSArray *)array {
++ (NSString *)toJson:(NSArray *)array {
     if (![array isKindOfClass:[NSArray class]] || array == nil || array.count == 0) {
         return nil;
     }
@@ -54,7 +54,7 @@
     return nil;
 }
 
-- (BOOL)bis_isContainsString:(NSString *)string {
+- (BOOL)isContainsString:(NSString *)string {
     for (NSString *element in self) {
         if ([element isKindOfClass:[NSString class]] && [element isEqualToString:string]) {
             return true;
@@ -63,4 +63,5 @@
     
     return false;
 }
+
 @end

@@ -6,9 +6,9 @@
 //  Copyright © 2015年 mapengzhen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "ZTHandyArray.h"
 
-@interface NSMutableArray (BisMutableArray)
+@interface NSMutableArray (Handy)
 /**
  *  @author  
  *
@@ -19,7 +19,7 @@
  *
  *  @return YES，表示移动成功，NO表示移动失败
  */
-- (BOOL)hdf_exchangeObjectFromIndex:(NSUInteger)from
+- (BOOL)exchangeObjectFromIndex:(NSUInteger)from
                             toIndex:(NSUInteger)to;
 
 
@@ -31,7 +31,7 @@
  *  @param atIndex  位置
  *  @return YES 表示成功，NO表示失败
  */
-- (BOOL)hdf_safeRemoveObjectAtIndex:(NSUInteger)atIndex;
+- (BOOL)safeRemoveObjectAtIndex:(NSUInteger)atIndex;
 
 /**
  *  @author  
@@ -42,7 +42,7 @@
  *
  *  @return YES，表示成功，NO表示失败
  */
-- (BOOL)hdf_safeRemoveObject:(id)anObject;
+- (BOOL)safeRemoveObject:(id)anObject;
 
 /**
  * @author  
@@ -52,5 +52,5 @@
  *
  * @return YES表示成功，NO表示插入失败
  */
-- (BOOL)hdf_safeInsertObject:(id)anObject atIndex:(NSUInteger)atIndex;
+- (BOOL)safeInsertObject:(id)anObject atIndex:(NSUInteger)atIndex;
 @end

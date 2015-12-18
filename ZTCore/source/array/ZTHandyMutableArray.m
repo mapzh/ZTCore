@@ -6,14 +6,13 @@
 //  Copyright © 2015年 mapengzhen. All rights reserved.
 //
 
-#import "NSMutableArray+BisMutableArray.h"
-#import "NSArray+BisArray.h"
-@implementation NSMutableArray (BisMutableArray)
-- (BOOL)bis_exchangeObjectFromIndex:(NSUInteger)from
+#import "ZTHandyMutableArray.h"
+@implementation NSMutableArray (Handy)
+- (BOOL)exchangeObjectFromIndex:(NSUInteger)from
                             toIndex:(NSUInteger)to {
     if ([self count] == 0 && to != from && from < [self count] && to < [self count]) {
-        id obj = [self bis_safeObjectAtIndex:from];
-        [self bis_safeRemoveObjectAtIndex:from];
+        id obj = [self safeObjectAtIndex:from];
+        [self safeRemoveObjectAtIndex:from];
         
         if(to >= [self count]) {
             [self addObject:obj];
@@ -27,7 +26,7 @@
     return NO;
 }
 
-- (BOOL)bis_safeRemoveObject:(id)anObject {
+- (BOOL)safeRemoveObject:(id)anObject {
     if (anObject == nil) {
         NSLog(@"待移除对象为空，不需要移除");
         return NO;
@@ -42,7 +41,7 @@
     return YES;
 }
 
-- (BOOL)bis_safeRemoveObjectAtIndex:(NSUInteger)atIndex {
+- (BOOL)safeRemoveObjectAtIndex:(NSUInteger)atIndex {
     if (atIndex >= self.count) {
         NSLog(@"索引越界，超出数组最大个数，请检查边界条件");
         return NO;
@@ -53,7 +52,7 @@
     return YES;
 }
 
-- (BOOL)bis_safeInsertObject:(id)anObject atIndex:(NSUInteger)atIndex {
+- (BOOL)safeInsertObject:(id)anObject atIndex:(NSUInteger)atIndex {
     if (anObject == nil) {
         NSLog(@"待插入对象为空，不需要添加");
         return NO;
