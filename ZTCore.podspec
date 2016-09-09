@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.homepage = 'https://gitlab.com/zt/ztcore'
   #s.social_media_url = 'https://xx'
   s.authors  = { 'mapengzhen' => 'mpz129@sina.com' }
-  s.source   = { :git => 'git@gitlab.com:zt/ZTCore.git', :tag => s.version }
+  s.source   = { :git => 'https://gitlab.com/zt/ZTCore.git', :tag => s.version }
   s.requires_arc = true
 
   s.ios.deployment_target = '6.0'
