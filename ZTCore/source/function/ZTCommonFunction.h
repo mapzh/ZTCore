@@ -16,3 +16,16 @@ BOOL isNotEmptyDictionary(NSDictionary *dict);
 
 //判断是否空字符串
 BOOL isNotEmptyString(NSString *str);
+
+//添加监听
+void ZTAddObserver(id observer, SEL selector, NSString *notifyName, id object);
+
+//发送通知
+void ZTNotify(NSString *notifyName, id object, NSDictionary *aUserInfo);
+
+//去除监听者
+void ZTRemoveObserver(id observer);
+
+//为监听者去除指定监听
+void ZTRemoveNotifyForObserver(id observer, NSString *notifyName);
+
