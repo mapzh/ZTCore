@@ -99,7 +99,7 @@
     }
     
     NSString* params = [pairs componentsJoinedByString:@"&"];
-    if ([string rangeOfString:@"?"].location == NSNotFound) {
+    if ([self rangeOfString:@"?"].location == NSNotFound) {
         return [self stringByAppendingFormat:@"?%@", params];
         
     } else {
