@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <objc/runtime.h>
+#import <UIKit/UIApplication.h>
+
 
 #if defined __cplusplus
 extern "C" {
@@ -34,7 +37,37 @@ void ZTRemoveObserver(id observer);
 //为监听者去除指定监听
 void ZTRemoveNotifyForObserver(id observer, NSString *notifyName);
 
+//判断设备是否iPad
+BOOL ZTIsPad(void);
 
+//判断是否iPhone
+BOOL ZTIsPhone(void);
+
+CGFloat ZTScreenScale(void);
+
+BOOL ZTIsRetina(void);
+
+//状态栏高度
+CGFloat ZTStatusBarHeight(void);
+    
+//Toolbar高度
+CGFloat ZTToolbarHeightForOrientation(UIInterfaceOrientation orientation);
+    
+//设备系统版本号
+BOOL ZTDeviceOSVersionIsAtLeast(double versionNumber);
+
+#pragma mark- path
+//bundle resource path
+//bundle : If nil, [NSBundle mainBundle] will be used
+NSString* ZTPathForBundleResource(NSBundle* bundle, NSString* relativePath);
+    
+NSString* ZTPathForDocumentsResource(NSString* relativePath);
+NSString* ZTPathForLibraryResource(NSString* relativePath);
+NSString* ZTPathForCachesResource(NSString* relativePath);
+
+    
+void ZTSwapInstanceMethods(Class cls, SEL originalSel, SEL newSel);
+void ZTSwapClassMethods(Class cls, SEL originalSel, SEL newSel);
     
 #if defined __cplusplus
 };
