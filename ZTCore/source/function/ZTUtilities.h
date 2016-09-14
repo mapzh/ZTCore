@@ -13,4 +13,11 @@
 #define ZTDPRINT(xx, ...)  ((void)0)
 #endif
 
-
+#ifdef DEBUG
+#define ZTDCONDITIONLOG(condition, xx, ...) { if ((condition)) { \
+ZTDPRINT(xx, ##__VA_ARGS__); \
+} \
+} ((void)0)
+#else
+#define ZTDCONDITIONLOG(condition, xx, ...) ((void)0)
+#endif
